@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="sudoku.css">
+    <title>Sudoku</title>
+</head>
+<body>
+    <div class = "titulo">
+        <h1 class="t1">
+            Sudoku
+        </h1>
+    </div>
+    <div class = "btn">
+        <button class = "btn-start" id = "start">Comieza!</button>
+    </div>
+    <div class = "lossMessage" id = "lossMessage">
+        <div class="popup">
+                <h1 id = "message">Perdiste</h1>
+                <a href="sudoku.html" class = "btn-regresar">Regresar</a>
+        </div>
+    </div>
+    <div class="contenedor" id = "contenedor">
+        <div class = "sudoku">
+            <div class = "seccion">
+                    <div class = "row">
+                            <div >
+                                    <div class = "col" ><input type="text" id = "row0-col0"/></div>
+                                    <div class = "col" ><input type="text" id = "row1-col0"/></div>
+                                    <div class = "col" ><input type="text" id = "row2-col0"/></div>
+                            </div>
+                            <div>
+                                    <div class = "col" ><input type="text" id = "row0-col1"/></div>
+                                    <div class = "col" ><input type="text" id = "row1-col1"/></div>
+                                    <div class = "col" ><input type="text" id = "row2-col1"/></div>
+                            </div>
+                            <div class="seccInt">
+                                    <div class = "col" ><input type="text" id = "row0-col2"/></div>
+                                    <div class = "col" ><input type="text" id = "row1-col2"/></div>
+                                    <div class = "col" ><input type="text" id = "row2-col2"/></div>
+                            </div>
+                        </div>
+                        <div class = "row">
+                                <div>
+                                        <div class = "col" ><input type="text" id = "row0-col3"/></div>
+                                        <div class = "col" ><input type="text" id = "row1-col3"/></div>
+                                        <div class = "col" ><input type="text" id = "row2-col3"/></div>
+                                </div>
+                                <div>
+                                        <div class = "col" ><input type="text" id = "row0-col4"/></div>
+                                        <div class = "col" ><input type="text" id = "row1-col4"/></div>
+                                        <div class = "col" ><input type="text" id = "row2-col4"/></div>
+                                </div>
+                                <div class="seccInt">
+                                        <div class = "col" ><input type="text" id = "row0-col5"/></div>
+                                        <div class = "col" ><input type="text" id = "row1-col5"/></div>
+                                        <div class = "col" ><input type="text" id = "row2-col5"/></div>
+                                </div>
+                        </div>
+                        <div class = "row">
+                                <div>
+                                        <div class = "col" ><input type="text" id = "row0-col6"/></div>
+                                        <div class = "col" ><input type="text" id = "row1-col6"/></div>
+                                        <div class = "col" ><input type="text" id = "row2-col6"/></div>
+                                </div>
+                                <div>
+                                        <div class = "col" ><input type="text" id = "row0-col7"/></div>
+                                        <div class = "col" ><input type="text" id = "row1-col7"/></div>
+                                        <div class = "col" ><input type="text" id = "row2-col7"/></div>
+                                </div>
+                                <div>
+                                        <div class = "col" ><input type="text" id = "row0-col8"/></div>
+                                        <div class = "col" ><input type="text" id = "row1-col8"/></div>
+                                        <div class = "col"><input type="text"  id = "row2-col8"/></div>
+                                </div>
+                        </div>
+            </div>
+           <div class = "seccion">
+                <div class = "row">
+                        <div>
+                                <div class = "col" ><input type="text" id = "row3-col0"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col0"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col0"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row3-col1"/></div>
+                                <div class = "col"><input type="text"  id = "row4-col1"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col1"/></div>
+                        </div>
+                        <div class="seccInt">
+                                <div class = "col" ><input type="text" id = "row3-col2"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col2"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col2"/></div>
+                        </div>
+                </div>
+                <div class = "row">
+                        <div>
+                                <div class = "col" ><input type="text" id = "row3-col3"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col3"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col3"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row3-col4"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col4"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col4"/></div>
+                        </div>
+                        <div class="seccInt">
+                                <div class = "col" ><input type="text" id = "row3-col5"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col5"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col5"/></div>
+                        </div>
+                </div>
+                <div class = "row">
+                        <div>
+                                <div class = "col" ><input type="text" id = "row3-col6"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col6"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col6"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row3-col7"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col7"/></div>
+                                <div class = "col" ><input type="tex" id = "row5-col7"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row3-col8"/></div>
+                                <div class = "col" ><input type="text" id = "row4-col8"/></div>
+                                <div class = "col" ><input type="text" id = "row5-col8"/></div>
+                        </div>
+                </div>
+           </div>
+           <div class = "seccion">
+                <div class = "row">
+                        <div>
+                                <div class = "col" ><input type="text" id = "row6-col0"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col0"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col0"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row6-col1"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col1"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col1"/></div>
+                        </div>
+                        <div class="seccInt">
+                                <div class = "col" ><input type="text" id = "row6-col2"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col2"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col2"/></div>
+                        </div>
+                </div>
+                <div class = "row">
+                        <div>
+                                <div class = "col" ><input type="text" id = "row6-col3"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col3"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col3"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row6-col4"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col4"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col4"/></div>
+                        </div>
+                        <div class="seccInt">
+                                <div class = "col" ><input type="text" id = "row6-col5"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col5"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col5"/></div>
+                        </div>
+                </div>
+                <div class = "row">
+                        <div>
+                                <div class = "col" ><input type="text" id = "row6-col6"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col6"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col6"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row6-col7"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col7"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col7"/></div>
+                        </div>
+                        <div>
+                                <div class = "col" ><input type="text" id = "row6-col8"/></div>
+                                <div class = "col" ><input type="text" id = "row7-col8"/></div>
+                                <div class = "col" ><input type="text" id = "row8-col8"/></div>
+                        </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+    <div class = "clock">
+        <h4><span class="hr" id = "hrs">00</span>:</h4>
+        <h4><span class="min" id = "min">00</span>:</h4>
+        <h4><span class="seg" id = seg>00</span></h4>
+    </div>
+    <script src="Concurrent.Thread.js"></script>
+    <script src="sudoku.js"></script>
+</body>
+</html>

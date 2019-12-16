@@ -1,0 +1,51 @@
+.menu{
+    position: fixed;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    padding: 70px;
+    align-items: center;
+    justify-content: center;
+    background: #34e89e; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #34e89e, #0f3443); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #34e89e, #0f3443); 
+    width: 400px;
+    margin-left: 150px;
+}
+
+.btn-start{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 140px;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.board{
+    visibility: hidden;
+    position: fixed;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    padding: 70px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 150px;
+}
+
+.row{
+    display: flex;
+}
+
+.cell{
+    width: 60px;
+    height: 60px;
+}
+
+.piece{
+    width: auto;
+    height: 50px;
+}
