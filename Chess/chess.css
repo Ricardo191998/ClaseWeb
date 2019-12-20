@@ -36,6 +36,26 @@ h2{
     margin-left: 150px;
 }
 
+.player1{
+    visibility: hidden;
+    position: fixed;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 150px;
+    margin-top: 555px;
+}
+
+
+.player2{
+    visibility: hidden;
+    position: fixed;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 150px;
+}
+
 .row{
     display: flex;
 }
