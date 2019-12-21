@@ -213,6 +213,7 @@ function comienzaJuego(){
 
 }
 
+//Al presionar un pieza
 
 function movimiento(elem){
     
@@ -256,28 +257,56 @@ function movimiento(elem){
             console.log("Valido");
             let newPiece = document.getElementById(temp).firstChild
             document.getElementById(temp).removeChild(newPiece);
-            coor.appendChild(newPiece);
-            if((parseInt(temp[0])% 2 == 0 && (alphabet.indexOf(temp[1]) + 1)% 2 == 0) || (parseInt(temp[0])% 2 == 1 && (alphabet.indexOf(temp[1]) +1 )% 2 == 1)){
-                document.getElementById(temp).style.backgroundColor = "gray";
-            }else{
-                document.getElementById(temp).style.backgroundColor = "white";
-            }
-            for(var n = 0 ; n < movValido.length ; n++){
-                if((parseInt(movValido[n][0])% 2 == 0 && (alphabet.indexOf(movValido[n][1]) + 1)% 2 == 0) || (parseInt(movValido[n][0])% 2 == 1 && (alphabet.indexOf(movValido[n][1]) +1 )% 2 == 1)){
-                    document.getElementById(movValido[n]).style.backgroundColor = "gray";
+            
+            if(coor.firstChild == null){
+                coor.appendChild(newPiece);
+                if((parseInt(temp[0])% 2 == 0 && (alphabet.indexOf(temp[1]) + 1)% 2 == 0) || (parseInt(temp[0])% 2 == 1 && (alphabet.indexOf(temp[1]) +1 )% 2 == 1)){
+                    document.getElementById(temp).style.backgroundColor = "gray";
                 }else{
-                    document.getElementById(movValido[n]).style.backgroundColor = "white";
+                    document.getElementById(temp).style.backgroundColor = "white";
+                }
+                for(var n = 0 ; n < movValido.length ; n++){
+                    if((parseInt(movValido[n][0])% 2 == 0 && (alphabet.indexOf(movValido[n][1]) + 1)% 2 == 0) || (parseInt(movValido[n][0])% 2 == 1 && (alphabet.indexOf(movValido[n][1]) +1 )% 2 == 1)){
+                        document.getElementById(movValido[n]).style.backgroundColor = "gray";
+                    }else{
+                        document.getElementById(movValido[n]).style.backgroundColor = "white";
+                    }
+                }
+                if(turn == "p1"){
+                    document.getElementById("player1").style.backgroundColor = "white";
+                    document.getElementById("player2").style.backgroundColor = "#FFFACD";
+                    turn = "p2";
+                }else{
+                    document.getElementById("player2").style.backgroundColor = "white";
+                    document.getElementById("player1").style.backgroundColor = "#FFFACD";
+                    turn = "p1"
+                }
+            }else{
+                coor.removeChild(coor.firstChild);
+                coor.appendChild(newPiece);
+                if((parseInt(temp[0])% 2 == 0 && (alphabet.indexOf(temp[1]) + 1)% 2 == 0) || (parseInt(temp[0])% 2 == 1 && (alphabet.indexOf(temp[1]) +1 )% 2 == 1)){
+                    document.getElementById(temp).style.backgroundColor = "gray";
+                }else{
+                    document.getElementById(temp).style.backgroundColor = "white";
+                }
+                for(var n = 0 ; n < movValido.length ; n++){
+                    if((parseInt(movValido[n][0])% 2 == 0 && (alphabet.indexOf(movValido[n][1]) + 1)% 2 == 0) || (parseInt(movValido[n][0])% 2 == 1 && (alphabet.indexOf(movValido[n][1]) +1 )% 2 == 1)){
+                        document.getElementById(movValido[n]).style.backgroundColor = "gray";
+                    }else{
+                        document.getElementById(movValido[n]).style.backgroundColor = "white";
+                    }
+                }
+                if(turn == "p1"){
+                    document.getElementById("player1").style.backgroundColor = "white";
+                    document.getElementById("player2").style.backgroundColor = "#FFFACD";
+                    turn = "p2";
+                }else{
+                    document.getElementById("player2").style.backgroundColor = "white";
+                    document.getElementById("player1").style.backgroundColor = "#FFFACD";
+                    turn = "p1"
                 }
             }
-            if(turn == "p1"){
-                document.getElementById("player1").style.backgroundColor = "white";
-                document.getElementById("player2").style.backgroundColor = "#FFFACD";
-                turn = "p2";
-            }else{
-                document.getElementById("player2").style.backgroundColor = "white";
-                document.getElementById("player1").style.backgroundColor = "#FFFACD";
-                turn = "p1"
-            }
+           
             temp = undefined;
         }else{
             console.log(temp)
@@ -298,7 +327,7 @@ function movimiento(elem){
     }
 }
 
-
+//Mostrara las casillas que son validas para que el usuario mueva
 function pintaCasillas(piece , coor){
     let mov = []; 
 
@@ -315,11 +344,43 @@ function pintaCasillas(piece , coor){
                     document.getElementById((parseInt(coor[0])+ 1).toString() +coor[1]).style.backgroundColor = "#21C6E3";
                     mov.push((parseInt(coor[0])+ 1).toString() +coor[1]);
                 }
+                if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1])!= null){
+                    if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild != null ){
+                        if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild.id[2] != "B"){
+                            document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                        }
+                    }
+                }
+                if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]) != null){
+                    if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild != null ){
+                        if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild.id[2] != "B"){
+                            document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                        }
+                    }
+                }
                 
             }else{
                 if(document.getElementById((parseInt(coor[0])+ 1).toString() +coor[1]).firstChild == null){
                     document.getElementById((parseInt(coor[0])+ 1).toString() +coor[1]).style.backgroundColor = "#21C6E3";
                     mov.push((parseInt(coor[0])+ 1).toString() +coor[1]);
+                }
+                if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1])!= null){
+                    if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild != null ){
+                        if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild.id[2] != "B"){
+                            document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                        }
+                    }
+                }
+                if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]) != null){
+                    if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild != null ){
+                        if(document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild.id[2] != "B"){
+                            document.getElementById((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])+ 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                        }
+                    }
                 }
             }
         }
@@ -347,11 +408,94 @@ function pintaCasillas(piece , coor){
          
         if(/\d+CB/.test(piece)){
 
-            if(coor[0] == "1"){
-                
-                
-            }else{
-                
+            if(document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]) != null){
+                if(document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])+ 2).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])+ 2).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                }
+            }
+            if(document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]) != null){
+                if(document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])+ 2).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])+2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])+ 2).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                }
+            }
+            if(document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]) != null){
+                if(document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])- 2).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])- 2).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                }
+            }
+            if(document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]) != null){
+                if(document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])- 2).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])-2).toString()+ alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])- 2).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                }
+            }
+            ////---------
+            if(document.getElementById((parseInt(coor[0])-1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]) != null){
+                if(document.getElementById((parseInt(coor[0])-1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])-1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])-1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-2]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])-1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-2]);
+                }
+            }
+            if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]) != null){
+                if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])+1).toString() +alphabet[alphabet.indexOf(coor[1])-2]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])+1).toString() +alphabet[alphabet.indexOf(coor[1])-2]);
+                }
+            }
+            if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]) != null){
+                if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])+1).toString() +alphabet[alphabet.indexOf(coor[1])-2]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])-2]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])+1).toString() +alphabet[alphabet.indexOf(coor[1])-2]);
+                }
+            }
+            if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])+2]) != null){
+                if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])+2]).firstChild != null){
+                    if(document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])+2]).firstChild.id[2] != "B"){
+                        document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])+2]).style.backgroundColor = "#21C6E3"
+                        mov.push((parseInt(coor[0])+1).toString() +alphabet[alphabet.indexOf(coor[1])+2]);
+                    }
+                }else{
+                    document.getElementById((parseInt(coor[0])+1).toString()+ alphabet[alphabet.indexOf(coor[1])+2]).style.backgroundColor = "#21C6E3"
+                    mov.push((parseInt(coor[0])+1).toString() +alphabet[alphabet.indexOf(coor[1])+2]);
+                }
             }
         }
 
@@ -369,11 +513,18 @@ function pintaCasillas(piece , coor){
             
         if(/\d+TB/.test(piece)){
             
-            if(coor[0] == "1"){
-                    
+            if(coor[0] == "1"){  
                 
             }else{
-                
+                if(document.getElementById((parseInt(coor[0])+ 1).toString() +coor[1]) != null){
+                    for(var i = parseInt(coor[0]) ; i < 9 ; i ++){
+                        i
+                    }
+                    for(var i = parseInt(coor[0]) ; i > 0 ; i--){
+
+                    }
+
+                } 
             }
         }
         return mov 
@@ -381,13 +532,54 @@ function pintaCasillas(piece , coor){
 
         if(/\d+PN/.test(piece)){
             if(coor[0] == "7"){
-                document.getElementById((parseInt(coor[0])-1).toString() +coor[1]).style.backgroundColor = "#21C6E3";
-                document.getElementById((parseInt(coor[0])- 2).toString() +coor[1]).style.backgroundColor = "#21C6E3";
-                mov.push((parseInt(coor[0])- 1).toString() +coor[1]);
-                mov.push((parseInt(coor[0])- 2).toString() +coor[1]);
+
+                if(document.getElementById((parseInt(coor[0])- 2).toString() +coor[1]).firstChild == null){
+                    document.getElementById((parseInt(coor[0])- 2).toString() +coor[1]).style.backgroundColor = "#21C6E3";
+                    mov.push((parseInt(coor[0])- 2).toString() +coor[1]);
+                }
+                if(document.getElementById((parseInt(coor[0])- 1).toString() +coor[1]).firstChild == null){
+                    document.getElementById((parseInt(coor[0])- 1).toString() +coor[1]).style.backgroundColor = "#21C6E3";
+                    mov.push((parseInt(coor[0])- 1).toString() +coor[1]);
+                }
+                if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1])!= null){
+                    if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild != null){
+                        if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild.id[2] != "N"){
+                            document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                        }   
+                    }
+                }
+                if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]) != null){
+                    if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild != null){
+                        if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild.id[2] != "N"){
+                            document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                        }
+                    }
+                }
+
+
             }else{
-                document.getElementById((parseInt(coor[0])- 1).toString() +coor[1]).style.backgroundColor = "#21C6E3";
-                mov.push((parseInt(coor[0])- 1).toString() +coor[1]);
+                if(document.getElementById((parseInt(coor[0])- 1).toString() +coor[1]).firstChild == null){
+                    document.getElementById((parseInt(coor[0])- 1).toString() +coor[1]).style.backgroundColor = "#21C6E3";
+                    mov.push((parseInt(coor[0])- 1).toString() +coor[1]);
+                }
+                if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1])!= null){
+                    if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild != null){
+                        if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).firstChild.id[2] != "N"){
+                            document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])+1]);
+                        }
+                    }
+                }
+                if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]) != null){
+                    if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild != null){
+                        if(document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).firstChild.id[2] != "N"){
+                            document.getElementById((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]).style.backgroundColor = "#21C6E3";
+                            mov.push((parseInt(coor[0])- 1).toString() +alphabet[alphabet.indexOf(coor[1])-1]);
+                        }
+                    }
+                }
             }
         }
 
